@@ -1,0 +1,8 @@
+prefix=/home/ahmad/catkinJava_ws/devel
+
+Name: android_foo
+Description: Description of android_foo
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/ahmad/catkinJava_ws/devel/lib 
+Requires: 
