@@ -42,16 +42,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Start"
-
             android:onClick="startProcess"/>
-        <Button
-            android:id="@+id/publish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Publish"
-            android:layout_gravity="bottom"
-            android:onClick="publishToROS"/>
+
     </LinearLayout>
 
 

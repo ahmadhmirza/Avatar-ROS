@@ -27,7 +27,9 @@
     <last-search-timestamp>1562484702975</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863273f0-0bbd-4485-8eb3-710b24bcfa14" name="Default Changelist" comment="" />
+    <list default="true" id="863273f0-0bbd-4485-8eb3-710b24bcfa14" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/android_test/src/main/res/layout/activity_avatar_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_test/src/main/res/layout/activity_avatar_camera.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,12 +95,12 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/activity_avatar_camera.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="353">
+              <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -130,6 +132,9 @@
       <find>image_canvas</find>
       <find>log</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -174,11 +179,29 @@
     <option name="width" value="1857" />
     <option name="height" value="1092" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="android_foo" type="1abcf292:AndroidViewProjectNode" />
+              <item name="android_foo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android_foo" type="1abcf292:AndroidViewProjectNode" />
+              <item name="android_foo" type="462c0819:PsiDirectoryNode" />
+              <item name="android_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,23 +298,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="android_foo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="android_foo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android_foo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="android_foo" type="462c0819:PsiDirectoryNode" />
-              <item name="android_test" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -531,6 +537,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.29353234" />
@@ -548,8 +555,8 @@
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3295099" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3295099" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50193477" side_tool="true" weight="0.3409802" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.49806523" visible="true" weight="0.31282586" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.49806523" visible="true" weight="0.31347963" />
       <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
@@ -588,12 +595,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/name_map_dialog.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/ViewControlLayer.java" />
     <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MapManager.java" />
@@ -619,20 +626,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/activity_create_map.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="14" selection-end-column="36" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/activity_camera_view.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCV/build.gradle" />
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
@@ -833,20 +840,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/main.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="47" selection-end-column="19" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10">
           <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -873,12 +880,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/res/layout/activity_avatar_camera.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="353">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
