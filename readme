@@ -1,0 +1,6 @@
+Project AVATAR:
+* Avatar android application with ROS support for remote communication
+* with a PC running ROS-master node to allow for running TF model and
+* performing predictions on the PC.
+
+*The project must be placed locally in /home/ahmad/catkinJava_ws Directory
