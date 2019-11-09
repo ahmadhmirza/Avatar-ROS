@@ -28,20 +28,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="863273f0-0bbd-4485-8eb3-710b24bcfa14" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/AutoNav.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/CreateMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/SystemCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/res/layout/activity_auto_nav.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/res/layout/activity_camera_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/res/layout/activity_create_map.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android_test/src/main/res/layout/name_map_dialog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,23 +87,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/AvatarCameraActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
+            <state relative-caret-position="195">
+              <caret line="92" column="7" lean-forward="true" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding>
                 <element signature="e#833#851#0" expanded="true" />
               </folding>
             </state>
           </provider>
           <provider editor-type-id="android-manifest" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -169,7 +168,6 @@
         <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MvUtils/SafeFaceDetector.java" />
         <option value="$PROJECT_DIR$/android_test/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MvUtils/FaceDetection.java" />
-        <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java" />
         <option value="$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/android_test/build.gradle" />
         <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/Sender.java" />
@@ -177,6 +175,7 @@
         <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MvUtils/DetectLandmarks.java" />
         <option value="$PROJECT_DIR$/android_test/src/main/res/layout/activity_avatar_camera.xml" />
         <option value="$PROJECT_DIR$/android_test/src/main/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -544,6 +543,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.29353234" />
@@ -730,16 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/CameraViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ros.rosjava_core/rosjava/0.3.6/90f54896d77f5f60998826431d22fc186e58c7ee/rosjava-0.3.6.jar!/org/ros/node/topic/Publisher.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -836,16 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android_ros_morop/build/intermediates/manifest-checker/debug/manifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -884,23 +864,43 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/AvatarCameraActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
           <folding>
             <element signature="e#833#851#0" expanded="true" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/CameraViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/AvatarCameraActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="92" column="7" lean-forward="true" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
