@@ -1245,7 +1245,6 @@ id progress_horizontal
 id pt_divet
 id pt_home_marker
 id pt_outline
-id publish
 id publishMessage
 id radio
 id right
