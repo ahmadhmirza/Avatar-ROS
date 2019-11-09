@@ -4,7 +4,6 @@ package org.example.ahmad.android_test;
 */
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import org.jboss.netty.buffer.ChannelBufferOutputStream;
 import org.ros.internal.message.MessageBuffers;
@@ -16,21 +15,15 @@ import org.ros.node.topic.Publisher;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
-import geometry_msgs.Pose2D;
 import sensor_msgs.CompressedImage;
 
 public class Sender extends AbstractNodeMain {
     private String topic_name;
     private String topic_name_avatar;
-    private String topic_name_avatarString;
-    private String topic_name_avatarInt;
-    private String goalMessage;
-    private Publisher<std_msgs.String> stringPublisher;
-    private Publisher<geometry_msgs.Pose2D> posePublisher;
+    private String topic_name_avatarFlag;
+    private Publisher<std_msgs.Int32> flagPublisher;
     private Publisher<sensor_msgs.CompressedImage> imagePublisher;
-    private Publisher<std_msgs.Int32> landMarksPublisher;
     private CompressedImage image;
     private Time currentTime;
     ConnectedNode connectedNode;
@@ -39,18 +32,17 @@ public class Sender extends AbstractNodeMain {
     public Sender() {
         this.topic_name = "destination_android";
         this.topic_name_avatar="image_transport";
-        this.topic_name_avatarString="landmarks_transport";
-        this.topic_name_avatarInt="landmarks_points";
+        this.topic_name_avatarFlag="prediction_flag";
     }
 
     /**
      * Function to set a custom topic name for the publishers
-     * @param topic
+     * @param
      */
-    public Sender(String topic) {
-        this.topic_name = topic;
+/*    public Sender(String topic) {
+        this.topic_name = topic_name_avatarFlag;
         this.topic_name_avatar = topic;
-    }
+    }*/
 
     public GraphName getDefaultNodeName() {
         return GraphName.of("android_test/Publisher_Android");
@@ -62,94 +54,47 @@ public class Sender extends AbstractNodeMain {
      */
     public void onStart(ConnectedNode connectedNode) {
         this.connectedNode = connectedNode;
-        //publisher = connectedNode.newPublisher(this.topic_name, "std_msgs/String");
-        this.posePublisher = connectedNode.newPublisher(this.topic_name, Pose2D._TYPE);
         this.imagePublisher = connectedNode.newPublisher(topic_name_avatar,sensor_msgs.CompressedImage._TYPE);
-        this.stringPublisher = connectedNode.newPublisher(topic_name_avatarString, "std_msgs/String");
-        this.landMarksPublisher = connectedNode.newPublisher(topic_name_avatarInt, "std_msgs/Int32");
+        this.flagPublisher = connectedNode.newPublisher(topic_name_avatarFlag, "std_msgs/Int32");
 
         image = connectedNode.getTopicMessageFactory().newFromType(sensor_msgs.CompressedImage._TYPE);
     }
-
-    /**
-     * Creates and publishes the pose message
-     * @param x
-     * @param y
-     * @param theta
-     */
-    public void publishMessage(double x,double y, double theta){
-        geometry_msgs.Pose2D pose = posePublisher.newMessage();
-
-        pose.setX(x);
-        pose.setY(y);
-        pose.setTheta(theta);
-
-        posePublisher.publish(pose);
-    }
-
-    /**
-     * Converts the incomming bitmap image to a compressed image format - jpeg
-     * populates the image CompressedImage object with the received data
-     * publishes image on the specified topic
-     *
-     * @param b Bitmap image to be published
-     */
-    public void publishImage(Bitmap b){
-
-        ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        b.compress(Bitmap.CompressFormat.JPEG, 100, out);
-        byte[] byteArray = out.toByteArray();
-
-        try {
-            stream.write(byteArray);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        currentTime = connectedNode.getCurrentTime();
-        image.getHeader().setStamp(currentTime);
-        image.getHeader().setFrameId(frameId);
-        image.setFormat("bgr8; jpeg compressed bgr8");
-        image.setData(stream.buffer().copy());
-        stream.buffer().clear();
-        imagePublisher.publish(image);
-    }
-
-    public void publishImageAndLandmarks(Bitmap b, String lms){
-
-        ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        b.compress(Bitmap.CompressFormat.JPEG, 100, out);
-        byte[] byteArray = out.toByteArray();
-
-        try {
-            stream.write(byteArray);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        currentTime = connectedNode.getCurrentTime();
-        image.getHeader().setStamp(currentTime);
-        image.getHeader().setFrameId(frameId);
-        image.setFormat("bgr8; jpeg compressed bgr8");
-        image.setData(stream.buffer().copy());
-        stream.buffer().clear();
-
-
-        std_msgs.String str =  stringPublisher.newMessage();
-        str.setData(lms);
+    public void publishFlag(int flag){
+        std_msgs.Int32 predictionFlag =  flagPublisher.newMessage();
+        predictionFlag.setData(flag);
 
         //publish the messages over the ROS network
-        stringPublisher.publish(str);
+        flagPublisher.publish(predictionFlag);
+    }
+
+    public void publishImageAndLandmarks(Bitmap b){
+
+        ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        b.compress(Bitmap.CompressFormat.JPEG, 100, out);
+        byte[] byteArray = out.toByteArray();
+
+        try {
+            stream.write(byteArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        currentTime = connectedNode.getCurrentTime();
+        image.getHeader().setStamp(currentTime);
+        image.getHeader().setFrameId(frameId);
+        image.setFormat("bgr8; jpeg compressed bgr8");
+        image.setData(stream.buffer().copy());
+        stream.buffer().clear();
+
         imagePublisher.publish(image);
     }
 
-    /**
+/*    *//**
      *
      * @param b Bitmap Image
      * @param lMarks Array list containg landMark point of datatype int
-     */
+     *//*
     public void publishImageAndLandmarks2(Bitmap b, ArrayList<Integer> lMarks){
 
         ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
@@ -182,24 +127,36 @@ public class Sender extends AbstractNodeMain {
         }
         intMsg.setData(lMarks.size());
         landMarksPublisher.publish(intMsg);
-    }
+    }*/
 
 
-    private std_msgs.String extractLipsLandmarks(ArrayList dataArray){
-        std_msgs.String landmarkString = stringPublisher.newMessage();
-        String x="";
-        //landmarkString.setData(dataArray.get(0).toString());
-        x = dataArray.get(0).toString();
-        for (int i=0; i<=dataArray.size(); i++){
-            x = x +";" + dataArray.get(i).toString();
+    /**
+     * Converts the incomming bitmap image to a compressed image format - jpeg
+     * populates the image CompressedImage object with the received data
+     * publishes image on the specified topic
+     *
+     * @param b Bitmap image to be published
+     */
+    public void publishImage(Bitmap b){
 
+        ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        b.compress(Bitmap.CompressFormat.JPEG, 100, out);
+        byte[] byteArray = out.toByteArray();
+
+        try {
+            stream.write(byteArray);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        landmarkString.setData(x);
-        return landmarkString;
-
-    }
-    public void createGoalString(String x, String y){
-        goalMessage = ("x: " + x + ", y: " + y );
+        currentTime = connectedNode.getCurrentTime();
+        image.getHeader().setStamp(currentTime);
+        image.getHeader().setFrameId(frameId);
+        image.setFormat("bgr8; jpeg compressed bgr8");
+        image.setData(stream.buffer().copy());
+        stream.buffer().clear();
+        imagePublisher.publish(image);
     }
 
 }
