@@ -1,5 +1,9 @@
 package org.example.ahmad.android_test.MvUtils;
 
+/**
+ * @author ahmad.mirza001@stud.fh-dortmund.de (Ahmad H. Mirza)
+ */
+
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -34,7 +38,6 @@ import java.util.List;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
-
 public class DetectLandmarks {
     final private static String modelFileName = "shape_predictor_68_face_landmarks.dat";
     final private static String shapePredictorUrl = "https://drive.google.com/uc?authuser=0&id=1IWgPwTyI9BHdAseUqfOHLSuoHpKNMecv&export=download";
@@ -43,7 +46,6 @@ public class DetectLandmarks {
     private static String mShapeModel; //path of shape model in downloads
     private static File shapeModelFileURI;
     private static FaceDet mFaceDet;
-    private Uri imgURI;
     private Bitmap bitmap = null;
     private static final String TAG = "dlibTiming";
     private List<VisionDetRet> mFaceList = new ArrayList<>();

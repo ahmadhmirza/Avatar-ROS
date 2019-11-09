@@ -21,8 +21,6 @@
             android:name=".AvatarCameraActivity"
             android:label="@string/title_activity_avatar_camera"
             android:theme="@style/AppTheme_main.NoActionBar"></activity>
-        <activity android:name=".CameraViewActivity" />
-        <activity android:name=".CreateMap" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -33,10 +31,6 @@
             </intent-filter>
             android:theme="@style/AppTheme_main" >
         </activity>
-        <activity
-            android:name=".AutoNav"
-            android:label="@string/title_activity_auto_nav"
-            android:theme="@style/AppTheme_autoNav.NoActionBar" />
         <activity android:name="org.ros.android.MasterChooser" />
 
         <service android:name="org.ros.android.NodeMainExecutorService">
