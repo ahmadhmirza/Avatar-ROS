@@ -399,7 +399,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="64" />
     <option name="y" value="-11" />
     <option name="width" value="1857" />
@@ -575,7 +575,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.android_test">
+  <component name="RunManager" selected="Gradle./home/ahmad/catkinJava_ws/src/android_foo/android_test [clean]">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
