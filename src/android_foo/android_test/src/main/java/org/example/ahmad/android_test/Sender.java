@@ -56,27 +56,6 @@ public class Sender extends AbstractNodeMain {
         return GraphName.of("android_test/Publisher_Android");
     }
 
-/*
-    public void onStart(ConnectedNode connectedNode) {
-        final Publisher<std_msgs.String> publisher = connectedNode.newPublisher(this.topic_name, "std_msgs/String");
-        connectedNode.executeCancellableLoop(new CancellableLoop() {
-            private int sequenceNumber;
-
-            protected void setup() {
-                this.sequenceNumber = 0;
-            }
-
-            protected void loop() throws InterruptedException {
-                std_msgs.String str =  publisher.newMessage();
-                str.setData("Testing Android publisher " + this.sequenceNumber);
-                publisher.publish(str);
-                ++this.sequenceNumber;
-                Thread.sleep(1000L);
-            }
-        });
-    }
-*/
-
     /**
      * Initializes the publisher objects with Topic names, and message types
      * @param connectedNode Name of the connected node, passed internally
@@ -99,8 +78,6 @@ public class Sender extends AbstractNodeMain {
      * @param theta
      */
     public void publishMessage(double x,double y, double theta){
-        //std_msgs.String str =  publisher.newMessage();
-
         geometry_msgs.Pose2D pose = posePublisher.newMessage();
 
         pose.setX(x);
@@ -108,8 +85,6 @@ public class Sender extends AbstractNodeMain {
         pose.setTheta(theta);
 
         posePublisher.publish(pose);
-        //str.setData(goalMessage);
-        //publisher.publish(str);
     }
 
     /**
@@ -218,8 +193,6 @@ public class Sender extends AbstractNodeMain {
         for (int i=0; i<=dataArray.size(); i++){
             x = x +";" + dataArray.get(i).toString();
 
-            //landmarkString.setData(landmarkString.getData() + ";" + dataArray.get(i).toString());
-            //Log.i("landmarkString", landmarkString.getData());
         }
         landmarkString.setData(x);
         return landmarkString;
