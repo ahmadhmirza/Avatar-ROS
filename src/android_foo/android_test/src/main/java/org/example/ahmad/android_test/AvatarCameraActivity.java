@@ -70,6 +70,8 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
     private int MAX_HEIGHT = 800;
     private Sender imagePublisher;
     private boolean publishData;
+    private int predictionFlag;
+
     private ArrayList<Integer> landmarksData = new ArrayList<>(); //Arraylist to hold landmarks coordinates
 
 
@@ -115,6 +117,7 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
         mOpenCvCameraView.setMaxFrameSize(MAX_WIDTH,MAX_HEIGHT);
         publishData=false;
         load_cascade();
+        predictionFlag=1; //Inverse logic
     }
 
     //*****OpenCV Initialization ********//
@@ -175,15 +178,15 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
         mRGBA =  inputFrame.rgba();
         mGray = inputFrame.gray();
         //faceDetection(mRGBA);
-        if(process){
+        predictionFlag=1;
 
+        if(process){
+            predictionFlag=0;
             faceDetection(mRGBA);
             detectLandmarks2(mRGBA);
 
         }
-        //Mat x=new Mat();
-        // Utils.bitmapToMat(processedImage,x);
-        //return faceDetection(mRGBA);
+        imagePublisher.publishFlag(predictionFlag);
         return inputFrame.gray();
     }
 
@@ -351,7 +354,8 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
             //Pass the landmark array to the sender class,
             //The sender class should iterate through the array list and publish each point one by one?
 
-            imagePublisher.publishImageAndLandmarks(processedImage,landmarkDetector.getLandmarkPoints().toString());
+            imagePublisher.publishImageAndLandmarks(processedImage);
+
             //imagePublisher.publishImage(processedImage);
             //imagePublisher.publishImageAndLandmarks2(processedImage,landmarksData);
 
