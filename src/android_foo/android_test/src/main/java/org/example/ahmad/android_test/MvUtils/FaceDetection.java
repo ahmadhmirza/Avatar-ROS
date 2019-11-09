@@ -1,5 +1,7 @@
 package org.example.ahmad.android_test.MvUtils;
-
+/**
+ * @author ahmad.mirza001@stud.fh-dortmund.de (Ahmad H. Mirza)
+ */
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;

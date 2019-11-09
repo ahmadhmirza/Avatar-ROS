@@ -1,5 +1,7 @@
 package org.example.ahmad.android_test;
-
+/**
+ * @author ahmad.mirza001@stud.fh-dortmund.de (Ahmad H. Mirza)
+*/
 
 import android.graphics.Bitmap;
 import android.util.Log;
