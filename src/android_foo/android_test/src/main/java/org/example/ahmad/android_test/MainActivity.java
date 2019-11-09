@@ -36,17 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void autoNavStart(View view) {
-
-        Intent intent = new Intent(this, AutoNav.class);
-        startActivity(intent);
-    }
-
-    public void mapViewStart(View view) {
-
-        Intent intent = new Intent(this, CreateMap.class);
-        startActivity(intent);
-    }
     public void avatarStart(View view) {
 
         Intent intent = new Intent(this, AvatarCameraActivity.class);
