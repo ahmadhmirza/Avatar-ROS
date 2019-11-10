@@ -38,6 +38,8 @@ class image_feature:
         '''Initialize ros subscriber'''
         global imageList
         global count 
+        global image_path
+        image_path = r'/home/ahmad/Avatar/Prediction_Path'
         count = 0
         imageList=[]
         # subscribed Topic
@@ -84,7 +86,7 @@ class image_feature:
             #cv2.circle(image_np,(int(x),int(y)), 3, (0,0,255), -1)
         imageList.append(image_np)
         #cv2.imshow('cv_img', image_np)
-        image_path = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/My_Training_Data/Daniel/p03/01'
+        #image_path = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/My_Training_Data/Daniel/p03/01'
         
         if len(imageList) == 14:
             print("Images in list: " + str(len(imageList)))
