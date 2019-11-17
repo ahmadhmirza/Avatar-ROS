@@ -6,49 +6,28 @@
     density="400dpi"
     format="10"
     plugin-version="3.2.1"
-    timestamp="1573377075642"
+    timestamp="1573982168207"
     token="-1778810317691059365"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1853" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="773" />
+        duration="0" />
     <task
         name="verifier"
-        duration="46" />
+        duration="0" />
 
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/resources/instant-run/debug/resources-debug.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/dep/dependencies.apk"
-        type="SPLIT" />
     <artifact
         location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
     <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/dep/dependencies.apk"
         type="SPLIT" />
     <artifact
         location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_9.apk"
@@ -57,7 +36,28 @@
         location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_8.apk"
         type="SPLIT" />
     <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
         location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
     <artifact
         location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/instant-run-apk/debug/android_test-debug.apk"
@@ -65,34 +65,13 @@
 
     <build
         build-mode="FULL"
-        timestamp="1573377075642"
+        timestamp="1573982168207"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/resources/instant-run/debug/resources-debug.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
         <artifact
             location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
             location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_9.apk"
@@ -101,7 +80,28 @@
             location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/instant-run-apk/debug/android_test-debug.apk"

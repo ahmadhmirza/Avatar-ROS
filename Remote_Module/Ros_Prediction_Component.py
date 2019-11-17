@@ -54,28 +54,17 @@ from pypac import pac_context_for_url
 
 class LipReading_Predictor:
     def __init(self):#
+        print("Prediction class initialized successfully")
 ##################### Part -1 : Load pre-trained model ########################
-        self.image_path = r'/home/ahmad/Avatar/Prediction_Path'
-        
-        with pac_context_for_url("https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"):
-            self.base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))        
-        #Loading VGG16 model and saving it as base_model        
-        print("VGG Model loaded...") 
+#        self.image_path = r'/home/ahmad/Avatar/Prediction_Path'
+#        
+#        with pac_context_for_url("https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"):
+#            self.base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))        
+#        #Loading VGG16 model and saving it as base_model        
+#        print("VGG Model loaded...") 
         
 ############## Part -1.1 : Load Model Trained for lip-reading #################
-        modelJson = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/TrainedModel/model.json'
-        modelH5 = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/TrainedModel/model.h5'        
-        # load json and create model
-        json_file = open(modelJson, 'r')
-        loaded_model_json = json_file.read()
-        json_file.close()
-        self.loaded_model = model_from_json(loaded_model_json)
-        # load weights into new model
-        self.loaded_model.load_weights(modelH5)
-        print("Loaded model from disk")         
-        # evaluate loaded model on test data
-        self.loaded_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])        
-        print("Pre-trained model loaded successfully")
+
 
     def getClassToPhraseMap(classNumber):
         NumToLang = {
