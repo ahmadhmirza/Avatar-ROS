@@ -1,0 +1,41 @@
+[1] https://www.nidcd.nih.gov/health/statistics/quick-statistics-voice-speech-language
+
+[2] https://www.cdc.gov/nchs/products/databriefs/db205.htm
+
+[3] https://www.statista.com/statistics/330695/number-of-smartphone-users-worldwide/
+
+[4] https://towardsdatascience.com/introduction-to-hidden-markov-models-cd2c93e6b781
+
+[5] https://www.nist.gov/itl/products-and-services/color-feret-database
+
+[6] https://github.com/tensorflow/tensorflow
+
+[7] Kaiqi Cen “Study of Viola-Jones Real Time Face Detector”; https://web.stanford.edu/class/cs231a/prev_projects_2016/cs231a_final_report.pdf
+
+[8] P.Viola, M.Jones; "Rapid Object Detection using a Boosted Cascade of Simple Features" ; Conference on Computer Vision and Pattern Recognition, 2001
+
+[9] AH.Mirza; "AVATAR: Implementation of facial landmark detection on an android device" ;
+
+[10] Henry A. Rowley, Shumeet Baluja, and Takeo Kanade; "Neural Network-Based Face Detection"
+
+[11] Moshu Wu, Guangda Su, Jun Zhou ; "A robust system of face detection and precise face organ location"
+
+[12] Anamika Singh, Manmindar Singh, Birmohan Singh; "Face detection and Eyes extraction using Sobel Edge Detection and Morphological Operations"
+
+[13] Prathap Nair, Andrea Cavallaro; "3-D Face Detection, Landmark Localizatiooon, and Registration Using a Point Distribution Model."
+
+
+
+
+
+-----
+resources
+
+--for lip reading--
+http://cs231n.stanford.edu/reports/2017/pdfs/227.pdf
+https://www.youtube.com/watch?v=3FpEljYFAi4
+https://sites.google.com/site/achrafbenhamadou/-datasets/miracl-vc1
+https://arxiv.org/abs/1611.01599
+
+--resources--
+https://github.com/tensorflow/tensorflow
