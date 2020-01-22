@@ -27,4 +27,7 @@
 *.jpg
 *.jpeg
 
-complaints.csv
+# Unnecessary folders in android project#
+#########################################
+.idea
+.gradle
