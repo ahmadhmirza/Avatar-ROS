@@ -32,4 +32,4 @@
 .idea
 .gradle
 
-*.docx#
+*.~lock.*
