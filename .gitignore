@@ -24,8 +24,6 @@
 
 # Training data-set Images #
 ############################
-*.jpg
-*.jpeg
 
 # Unnecessary folders in android project#
 #########################################
