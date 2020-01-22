@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import os
 import tensorflow as tf
 tf.disable_v2_behavior()
+from keras.layers import Dropout
 
 class_Mappings= {
         "w01" : [1,"Start"],
@@ -100,7 +101,7 @@ print("Pre-Processing Done...")
 
 print("Preparing train and test data..") 
 from sklearn.model_selection import train_test_split
-X_train, X_valid, y_train, y_valid = train_test_split(X, dummy_y, test_size=0.3, random_state=42)    # preparing the validation set
+X_train, X_valid, y_train, y_valid = train_test_split(X, dummy_y, test_size=0.5, random_state=42)    # preparing the validation set
 
 print("Data prepared...")
 
@@ -168,6 +169,7 @@ EPOCHS = 5
 model = Sequential()
 model.add(InputLayer((7*7*512,)))    # input layer
 model.add(Dense(units=500, activation=tf.nn.relu,input_shape=X_train.shape)) # hidden layer
+model.add(Dropout(0.1))
 model.add(Dense(5,input_shape=(500,), activation='softmax'))    # output layer
 
 model.summary()
@@ -187,8 +189,9 @@ print("Building the Model : Done")
 
 #evaluate the model
 
-scores = model.evaluate(X_train,y_train,verbose=0)
+scores = model.evaluate(X_train,y_train)
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+print('Test set\n  Loss: {:0.3f}\n  Accuracy: {:0.3f}'.format(scores[0],scores[1]))
 
 
 plt.title('Loss')
