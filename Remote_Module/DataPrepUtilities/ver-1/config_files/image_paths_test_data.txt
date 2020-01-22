@@ -1,0 +1,9 @@
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p01/01
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p01/02
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p01/03
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p02/01
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p02/02
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p02/03
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p03/01
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p03/02
+/home/ahmad/Avatar/MachineLearning/data_prep_v1/Arranged_training_data/2_Test_Data/p03/03
