@@ -91,7 +91,11 @@
         <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/AvatarCameraActivity.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="150">
+=======
+            <state relative-caret-position="201">
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
 =======
             <state relative-caret-position="201">
 >>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
@@ -130,6 +134,7 @@
         <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MvUtils/FaceDetection.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="120">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
@@ -143,6 +148,9 @@
 =======
             <state relative-caret-position="540">
 >>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
+=======
+            <state relative-caret-position="540">
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
               <caret line="36" column="21" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -152,7 +160,11 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
+=======
+      <file pinned="false" current-in-tab="true">
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
 =======
       <file pinned="false" current-in-tab="true">
 >>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
@@ -317,7 +329,10 @@
         </subPane>
       </pane>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
       <pane id="Scope" />
       <pane id="PackagesPane" />
 >>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
@@ -819,6 +834,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/openCVLibrary343/src/main/java/org/opencv/android/CameraBridgeViewBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-885">
@@ -836,6 +852,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/Reciever.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+=======
     <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/Reciever.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -866,8 +887,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/Sender.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="165">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openCVLibrary343/src/main/java/org/opencv/android/CameraBridgeViewBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-885">
+          <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
+=======
+        <state relative-caret-position="201">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android_test/src/main/java/org/example/ahmad/android_test/MvUtils/FaceDetection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openCVLibrary343/src/main/java/org/opencv/objdetect/CascadeClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="165">
           <caret line="24" column="30" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="30" />
@@ -908,6 +966,10 @@
         <state relative-caret-position="120">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
 =======
+>>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
+=======
+        <state relative-caret-position="120">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
 >>>>>>> ebc3e8ca4ff74fe93153aafa60ec29104d687f4b
         </state>
       </provider>
