@@ -114,9 +114,7 @@ from keras.applications.vgg16 import VGG16
 #from keras.layers import Dense, InputLayer, Dropout
 from keras.layers import Dense, InputLayer
 print(keras.__version__)
-modelPath = r"/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/Model"
-modelName = "Avatar_lr_Model.h5"
-TF_Model = os.path.join(modelPath,modelName)
+
 #from keras.applications import resnet50
 from pypac import pac_context_for_url
 with pac_context_for_url("https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"):
@@ -198,5 +196,20 @@ plt.title('Loss')
 plt.plot(history.history['loss'], label='train')
 plt.plot(history.history['val_loss'], label='test')
 plt.legend()
-plt.show();
+plt.show()
+plt.savefig('/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/Model/Model_Loss_Plot.png')
 
+print("Saving the Model")
+
+modelJson = r'/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/Model/model.json'
+modelH5 = r'/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/Model/model.h5'
+# serialize model to JSON
+model_json = model.to_json()
+with open(modelJson, "w") as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights(modelH5)
+print("Saved model to disk")
+#model.save(TF_Model)
+
+print("============== END OF SCRIPT ==============")
