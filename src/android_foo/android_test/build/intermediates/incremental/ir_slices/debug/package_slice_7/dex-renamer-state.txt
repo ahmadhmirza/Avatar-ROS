@@ -1,0 +1,4 @@
+#Sun Jan 26 19:23:42 CET 2020
+base.0=/home/ahmad/catkinJava_ws/src/android_foo/android_test/build/intermediates/transforms/dexMerger/debug/7
+path.0=classes.dex
+renamed.0=classes.dex

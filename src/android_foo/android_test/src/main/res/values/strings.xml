@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MOROP-Heros</string>
+    <string name="app_name">Project AVATAR</string>
     <string name="title_activity_auto_nav">AutoNav</string>
     <string name="title_activity_map_view">MapView</string>
     <string name="title_activity_create_map">CreateMap</string>
