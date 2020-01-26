@@ -31,3 +31,5 @@
 .gradle
 
 *.~lock.*
+
+src/android_foo/android_test/build/intermediates/*
