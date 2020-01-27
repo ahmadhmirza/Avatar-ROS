@@ -77,6 +77,7 @@ public class DetectLandmarks {
     /**
      * Face Detection and Facial Landmarks detection, along with performance measurements
      * are done in this method
+     * @return bm - Bitmap image - Processed results
      */
     public Bitmap detFaces(){
 
@@ -143,6 +144,14 @@ public class DetectLandmarks {
 
     }
 
+    /**
+     * Face Detection and Facial Landmarks detection. This method extracts the landmark points
+     * related to the lips ROI.
+     * Provision to draw the detected landmark points is available but disabled for performance
+     * improvement. If this feature is needed the line needs to be uncommented.
+     * Populates landmarkPoints Arraylist with points for LipsROI
+     * @return bm - Bitmap image - Processed results
+     */
     public Bitmap detFacesFromBitmap(Bitmap b){
 
         Bitmap bm = b;
@@ -222,6 +231,10 @@ public class DetectLandmarks {
         return bm;
     }
 
+    /**
+     * Returns the arraylist containing the point objects for Landmarks
+     * @return ArrayList landmarkPoints
+     */
     public ArrayList getLandmarkPoints(){
         return landmarkPoints;
     }
@@ -321,6 +334,14 @@ public class DetectLandmarks {
         return px / ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
+    /**
+     * Function to calculate distance between two points
+     * @param x1
+     * @param x2
+     * @param y1
+     * @param y2
+     * @return double x : distance
+     */
     private Double calculateDistance(int x1, int y1, int x2, int y2){
         int dist = (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) ;
         double x =Math.sqrt(dist);
