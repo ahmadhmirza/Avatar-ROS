@@ -92,9 +92,6 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
         }
     };
 
-    //public AvatarCameraActivity() {
-       // Log.i(TAG, "Instantiated new " + this.getClass());
-    //}
 
     public AvatarCameraActivity() {
         // The RosActivity constructor configures the notification title
@@ -102,7 +99,7 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
         Log.i("AvatarCameraActivity", "Instantiated new " + this.getClass());
     }
 
-    /** Called when the activity is first created. */
+    /** Called when the activity is first created. Several imporant variables are initialized here */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i("AvatarCameraActivity", "called onCreate");
@@ -195,6 +192,8 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
      * This method also sets the global variable FaceRoi after performing the
      * face detection steps for further processing e.g. cropping the full
      * image to the face ROI region
+     * @param inputFrame input frame: CvCameraViewFrame matrix
+     * @return inputFrame :MAT - Processed inputFrame, cropped to extracted faceROI
      */
     public Mat faceDetection(Mat inputFrame) {
 
@@ -265,6 +264,13 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
 
 
 
+    /**
+     * This function loads the cascade classifier for face detection to be used by OpenCV facedetection
+     * module. the cascade classifier is placed in /res/raw/lbpcascade_frontalface_improved.xml
+     *
+     * The classifier is loaded in the global variable of type CascadeClassifier classifier
+     * @return -
+     */
     public void load_cascade(){
         try {
             InputStream is = this.getResources().openRawResource(R.raw.lbpcascade_frontalface_improved);
@@ -299,9 +305,13 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
 
     //****************************Methods for landmark detection process****************************
 
+    /**
+     * This function sets the global variable process and is called from button press action from
+     * the user, This variable is used to device whether to perform image processing tasks on the
+     * inputFrame.
+     * @return -
+     */
     public void startProcess(View v){
-        //Utils.matToBitmap(mRGBA,processedImage);
-        //imageCanvas.setImageBitmap(processedImage);
         if(!process){
             process = true;
         }
@@ -309,10 +319,14 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
             process = false;
         }
 
-        //Mat cropped = new Mat(uncropped, roi);
     }
 
-
+    /**
+     * This function takes in a Mat object and performs landmarks detection on the input image matrix
+     * once the detection has been performed it also publishes the data over the ROS network, and draws
+     * the resulting image on the canvas
+     * @param inputFrame -Mat - CvCameraViewFrame matrix
+     */
     public void detectLandmarks2(Mat inputFrame){
         try {
 
@@ -352,7 +366,7 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
             landmarksData=landmarkDetector.getLandmarkPoints();
 
             //Pass the landmark array to the sender class,
-            //The sender class should iterate through the array list and publish each point one by one?
+            //The sender class should iterate through the array list and publish each point one by one
 
             imagePublisher.publishImageAndLandmarks(processedImage);
 
@@ -386,11 +400,24 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
 
 
 
-
+    /**
+     * @return faceROI rect object
+     */
     public Rect getFaceRoi() {
         return faceRoi;
     }
+    /**
+     * Sets global variable faceROI
+     * @param faceRoi - Rect object
+     */
+    public void setFaceRoi(Rect faceRoi) {
+        this.faceRoi = faceRoi;
+    }
 
+
+    /**
+     * Placeholder function for a button functionality for publishing data
+     */
     public void publishToROS(View v){
         if(!publishData){
             publishData=true;
@@ -401,11 +428,11 @@ public class AvatarCameraActivity extends RosActivity implements CvCameraViewLis
 
 
     }
-    public void setFaceRoi(Rect faceRoi) {
-        this.faceRoi = faceRoi;
-    }
 
-    //ROS Node init
+    /**
+     * Function to initialize Ros Nodes and corresponding classes
+     * @param nodeMainExecutor
+     */
     @Override
     protected void init(NodeMainExecutor nodeMainExecutor) {
         imagePublisher=new Sender();

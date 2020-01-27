@@ -221,5 +221,7 @@
     <orderEntry type="module" module-name="dlib" />
     <orderEntry type="module" module-name="openCVLibrary343" />
     <orderEntry type="module" module-name="dlib" />
+    <orderEntry type="module" module-name="openCVLibrary343" />
+    <orderEntry type="module" module-name="dlib" />
   </component>
 </module>

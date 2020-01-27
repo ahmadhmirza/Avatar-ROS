@@ -9,6 +9,9 @@ import org.ros.node.topic.Subscriber;
 
 /**
  * @author ahmad.mirza001@stud.fh-dortmund.de (Ahmad H. Mirza)
+ * Class for recieving data over the ROS network.
+ * Topic name can be set in a global varibale defined in the class body.
+ * Currently only designed to receive String objects.
  */
 
 public class Reciever extends AbstractNodeMain{

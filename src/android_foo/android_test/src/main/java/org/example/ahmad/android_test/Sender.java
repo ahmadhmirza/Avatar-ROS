@@ -1,6 +1,7 @@
 package org.example.ahmad.android_test;
 /**
  * @author ahmad.mirza001@stud.fh-dortmund.de (Ahmad H. Mirza)
+ * Class to publish data over the ROS network.
 */
 
 import android.graphics.Bitmap;
@@ -29,6 +30,9 @@ public class Sender extends AbstractNodeMain {
     ConnectedNode connectedNode;
     String frameId = "AVATAR-ROS";
 
+    /**
+     * Constructor for the class, initializes the topic names on which data will be published
+     */
     public Sender() {
         this.topic_name = "destination_android";
         this.topic_name_avatar="image_transport";
@@ -37,12 +41,11 @@ public class Sender extends AbstractNodeMain {
 
     /**
      * Function to set a custom topic name for the publishers
-     * @param
+     * @param topic - String type
      */
-/*    public Sender(String topic) {
-        this.topic_name = topic_name_avatarFlag;
+    public Sender(String topic) {
         this.topic_name_avatar = topic;
-    }*/
+    }
 
     public GraphName getDefaultNodeName() {
         return GraphName.of("android_test/Publisher_Android");
@@ -67,6 +70,10 @@ public class Sender extends AbstractNodeMain {
         flagPublisher.publish(predictionFlag);
     }
 
+    /**
+     * Publishes the landmarks data on the defined ROS topic
+     * @param b object of type Bitmap, to be published
+     */
     public void publishImageAndLandmarks(Bitmap b){
 
         ChannelBufferOutputStream stream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
