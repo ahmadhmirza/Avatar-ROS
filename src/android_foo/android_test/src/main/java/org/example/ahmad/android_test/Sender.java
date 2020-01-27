@@ -19,6 +19,9 @@ import java.io.IOException;
 
 import sensor_msgs.CompressedImage;
 
+/**
+ * Class to handle publishing data over the ROS network
+ */
 public class Sender extends AbstractNodeMain {
     private String topic_name;
     private String topic_name_avatar;

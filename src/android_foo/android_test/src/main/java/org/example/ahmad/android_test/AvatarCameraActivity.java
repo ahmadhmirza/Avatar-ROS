@@ -41,6 +41,10 @@ import java.util.ArrayList;
 
 import static org.opencv.core.CvType.CV_8UC4;
 
+
+/**
+ * AvatarCameraActivity handles camera operations as well as face and landmarks detection
+ */
 public class AvatarCameraActivity extends RosActivity implements CvCameraViewListener2 {
     //private static final String TAG = "AvatarCameraActivity";
     //private static final std_msgs.String TAG = "AvatarCameraActivity";
