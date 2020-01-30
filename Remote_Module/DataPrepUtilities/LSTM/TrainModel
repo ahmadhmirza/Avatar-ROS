@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 30 13:59:39 2020
+
+@author: ahmad
+"""
+import cv2
+import os
+from os import walk
+from natsort import natsorted, ns
+import numpy as np
+from numpy import array
+##################
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+##################
+
+
+MAX_IMAGES_IN_SEQUENCE = 42  
+IMAGESIZE=[224,224]
+
+"""
+Function to Read images from a directory
+Reads in .jpg format
+resizes the images to the size defined by IMAGESIZE constant
+
+PARAM   : Path to read images from
+RETURN  : A list of images
+"""
+def readImagesInPath(path):
+    fileList=[]
+    img_Names_List=[]
+    images=[]
+    for (dirpath, dirnames, filenames) in walk(path):
+        #Read all the images in the current directory
+        #arrange them in the list by name so the sequence in maintained
+        fileList.extend(filenames)
+        fileList=natsorted(fileList, alg=ns.IGNORECASE)
+        #Read the image in the openCV array
+        for element in fileList:
+            if ".jpg" in element:
+                img_Names_List.append(element)
+        for image in img_Names_List:
+            image_path = os.path.join(path,image)
+            img = cv2.imread(image_path,cv2.IMREAD_GRAYSCALE)
+            #plt.show(img)
+            if img is not None:
+                img=cv2.resize(img,(IMAGESIZE[0],IMAGESIZE[1]))
+                images.append(img)
+        return images
+    
+    
+"""
+To train the model expects the input of a constant size
+This function adds 0 array as image to the list as padding
+OR removes extra images
+
+PARAM   : 
+        Threshold : total allowed number of images
+        ImageSequence: List of images to which padding is to be applied
+        
+RETURN  : Updated list of images with padding
+"""
+def make_zeros(n_rows: int, n_columns: int):
+    matrix = []
+    for i in range(n_rows):
+        matrix.append([0] * n_columns)
+    return matrix
+
+def addPadding(threshold,ImageSequence):
+    length = len(ImageSequence)
+    count = abs(threshold -length)
+    PaddingMatrix = make_zeros(IMAGESIZE[0],IMAGESIZE[1])
+    
+    pendulum = 0
+    
+    if(length<threshold):
+        print(str(count) + " Images will be added as padding.")
+        for x in range(0,count):
+            if pendulum == 0:
+                ImageSequence.insert(0,PaddingMatrix)
+                pendulum = 1
+            elif pendulum == 1:
+                ImageSequence.append(PaddingMatrix)
+                pendulum = 0
+    if(length>threshold):
+        print(str(count) + " Images will be removed and not considered.")
+        for x in range(0,count):
+            if pendulum == 0:
+                ImageSequence.remove(0)
+                pendulum = 1
+            elif pendulum == 1:
+                ind = len(ImageSequence)-1
+                ImageSequence.remove(ind)
+                pendulum = 0
+    return ImageSequence
+
+
+"""
+Function to create TF model
+
+PARAM   : 
+        x - Training Data
+        y - Classification Data
+        epoch - INT - Number of epochs
+        length - number of neurons
+        
+RETURN  : xxxx
+"""
+def Model(x,y,epoch,length):
+    n_neurons = length
+    n_batch = length
+    n_epoch = epoch
+    # create LSTM
+    model = Sequential()
+    model.add(LSTM(n_neurons, input_shape=(x.shape[1], x.shape[2])))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    print(model.summary())
+    # train LSTM
+    model.fit(x, y, epochs=n_epoch, batch_size=n_batch, verbose=2)
+    # evaluate
+    result = model.predict(x, batch_size=n_batch, verbose=0)
+    for value in result:
+    	print('%.1f' % value)
+
+"""
+Function to reshape array to required 3-d shape
+PARAM   : 
+        Input array, 
+        Number of Samples, 
+        TimeStep, 
+        Features
+RETURN  : Reshaped array
+"""        
+def reshapeArray_1(array,samples,timeStep,features):
+    x= array.reshape(SAMPLES,TIME_STEP,FEATURES)
+    return x
+        
+SAMPLES     = 2
+TIME_STEP   = MAX_IMAGES_IN_SEQUENCE
+FEATURES    = IMAGESIZE[0]*IMAGESIZE[1]
+      
+seq1_path = r'/home/ahmad/Desktop/TrainImages/1/'
+seq2_path = r'/home/ahmad/Desktop/TrainImages/2/'
+
+seq_1=readImagesInPath(seq1_path)
+seq_2=readImagesInPath(seq2_path)
+
+
+seq_1=addPadding(MAX_IMAGES_IN_SEQUENCE,seq_1)
+seq_2=addPadding(MAX_IMAGES_IN_SEQUENCE,seq_2)
+
+#convert list to array:
+seq1=np.asarray(seq_1)
+seq2=np.asarray(seq_2)
+
+TrainingData = array([seq1,seq_2])
+TrainingData=reshapeArray_1(TrainingData,SAMPLES,TIME_STEP,FEATURES)
+
+result=array([1,2])
+
+x=TrainingData
+# 2-Samples , 1 OutFeature
+y = array([1,2])
+
+#Model(x,y,300,36)
+   
+#def main():
+#    seq1_path = r'/home/ahmad/Desktop/TrainImages/1/'
+#    seq2_path = r'/home/ahmad/Desktop/TrainImages/2/'
+#    
+#    seq_1=readImagesInPath(seq1_path)
+#
+#    seq_2=readImagesInPath(seq2_path)
+#    
+#    print(len(seq_1))
+#    print(len(seq_2))
+#
+#    
+#if __name__ == "__main__":
+#    main()
