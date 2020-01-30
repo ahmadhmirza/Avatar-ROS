@@ -21,6 +21,17 @@ from keras.layers import LSTM
 MAX_IMAGES_IN_SEQUENCE = 42  
 IMAGESIZE=[224,224]
 
+
+class_Mappings= {
+        "w01" : [0,"Start"],
+        "w02" : [0,"Stop"],
+        "w03" : [0,"Hello"],
+        "p01" : [1,"How are you?"],
+        "p02" : [2,"Nice to meet you?"],
+        "p03" : [3,"Thank you!"],
+        "c00" : [0,"Unclassified"]
+        }
+
 """
 Function to Read images from a directory
 Reads in .jpg format
@@ -89,11 +100,11 @@ def addPadding(threshold,ImageSequence):
         print(str(count) + " Images will be removed and not considered.")
         for x in range(0,count):
             if pendulum == 0:
-                ImageSequence.remove(0)
+                del ImageSequence[0]
                 pendulum = 1
             elif pendulum == 1:
                 ind = len(ImageSequence)-1
-                ImageSequence.remove(ind)
+                del ImageSequence[ind]
                 pendulum = 0
     return ImageSequence
 
@@ -110,9 +121,9 @@ PARAM   :
 RETURN  : xxxx
 """
 def Model(x,y,epoch,length):
-    n_neurons = length
-    n_batch = length
-    n_epoch = epoch
+    n_neurons = 1000
+    n_batch = 10
+    n_epoch = 200
     # create LSTM
     model = Sequential()
     model.add(LSTM(n_neurons, input_shape=(x.shape[1], x.shape[2])))
@@ -139,34 +150,50 @@ def reshapeArray_1(array,samples,timeStep,features):
     x= array.reshape(SAMPLES,TIME_STEP,FEATURES)
     return x
         
-SAMPLES     = 2
+
+SAMPLES     = 130
 TIME_STEP   = MAX_IMAGES_IN_SEQUENCE
 FEATURES    = IMAGESIZE[0]*IMAGESIZE[1]
-      
-seq1_path = r'/home/ahmad/Desktop/TrainImages/1/'
-seq2_path = r'/home/ahmad/Desktop/TrainImages/2/'
 
-seq_1=readImagesInPath(seq1_path)
-seq_2=readImagesInPath(seq2_path)
+DATA_SET_PATH = r"/home/ahmad/Desktop/Avatar_LipReading_DataSet/sequenceData/"
+
+Data_Info = {
+        "p01": [50,"p01",1],
+        "p02": [40,"p02",2],
+        "p03": [40,"p03",3]
+        }
+
+samplesList = []
+y_data =[]
+for item in  Data_Info:
+    print(item)
+    dataPath        =   os.path.join(DATA_SET_PATH,item)
+    numberOfSubDirectories  =   Data_Info[item][0]
+    classMapping  =   Data_Info[item][2]
+    
+    for sample in range(1,numberOfSubDirectories+1):
+        samplePath = os.path.join(dataPath,str(sample)+"/")
+        #print("Reading Images from:")
+        #print(samplePath)
+        sample = readImagesInPath(samplePath)
+        sample_padded=addPadding(MAX_IMAGES_IN_SEQUENCE,sample)
+        #convert list to array:
+        sample_array=np.asarray(sample_padded)
+        samplesList.append(sample_array)
+        y_data.append(classMapping)
+
+trainingData = np.array([])
+for item in samplesList:
+    trainingData = np.append(trainingData, item)   
+    
+TrainingData_FINAL=reshapeArray_1(trainingData,SAMPLES,TIME_STEP,FEATURES)
 
 
-seq_1=addPadding(MAX_IMAGES_IN_SEQUENCE,seq_1)
-seq_2=addPadding(MAX_IMAGES_IN_SEQUENCE,seq_2)
+x  = TrainingData_FINAL
+y  = y_data
 
-#convert list to array:
-seq1=np.asarray(seq_1)
-seq2=np.asarray(seq_2)
 
-TrainingData = array([seq1,seq_2])
-TrainingData=reshapeArray_1(TrainingData,SAMPLES,TIME_STEP,FEATURES)
-
-result=array([1,2])
-
-x=TrainingData
-# 2-Samples , 1 OutFeature
-y = array([1,2])
-
-#Model(x,y,300,36)
+Model(x,y,300,36)
    
 #def main():
 #    seq1_path = r'/home/ahmad/Desktop/TrainImages/1/'
