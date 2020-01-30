@@ -8,6 +8,7 @@ Created on Thu Jan 30 13:08:03 2020
 
 
 from numpy import array
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -15,13 +16,13 @@ from keras.layers import LSTM
 length = 5
 seq = array([i/float(length) for i in range(length)])
 
-
 #The input to LSTM must be 3-d
 # To reshape seq to 3-d
 # 5 samples, 1 timestep, 1 feature
 # output = 5 samples, 1 feature
 
 x = seq.reshape(len(seq), 1, 1)
+
 y = seq.reshape(len(seq), 1)
 
 # Network model:
