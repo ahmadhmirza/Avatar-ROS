@@ -26,11 +26,12 @@ result = array([5,0,7,5,9])
 
 #The input to LSTM must be 3-d
 # To reshape seq to 3-d
-# 5 samples, 1 timestep, 1 feature
-# output = 5 samples, 1 feature
 
+
+
+# 5 samples, 4 timestep, 1 feature
 x = seq.reshape(5, 4, 1)
-
+# Output, 5 samples, 1 feature
 y = result.reshape(5, 1)
 
 # Network model:
