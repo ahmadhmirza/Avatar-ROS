@@ -25,14 +25,11 @@ import os
 
 # Ros Messages
 from sensor_msgs.msg import CompressedImage
-# We do not use cv_bridge it does not support CompressedImage in python
-# from cv_bridge import CvBridge, CvBridgeError
 VERBOSE=False
        
 
 class image_feature:    
         
-
     def __init__(self):
         '''Initialize ros subscriber'''
         global imageList
@@ -48,48 +45,22 @@ class image_feature:
         if VERBOSE :
             print ("subscribed to /image_transport")
 
-
+    '''Callback function of subscribed topic. 
+    Here images are received and converted and saved to disk'''
     def callback(self, ros_data):
         global imageList
         global count
         BATCH_SIZE = 14
-        
-        '''Callback function of subscribed topic. 
-        Here images get converted and features detected'''
-        #print("here")
         if VERBOSE :
             print ('received image of type: "%s"' % ros_data.format)
 
-        #### direct conversion to CV2 ####
+        #### conversion to cv2 compatible format ####
         np_arr = np.frombuffer(ros_data.data, np.uint8)
-        image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-        #image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR) # OpenCV >= 3.0:
-        
-        #### Feature detectors using CV2 #### 
-        # "","Grid","Pyramid" + 
-        # "FAST","GFTT","HARRIS","MSER","ORB","SIFT","STAR","SURF"
-       # method = "GridFAST"
-        
-        #feat_det = cv2.xfeatures2d.SIFT_create()
-        
+        image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)    
         print("Frame Received..")
-        # convert np image to grayscale
-        #featPoints = feat_det.detect(
-            #cv2.cvtColor(image_np, cv2.COLOR_BGR2GRAY))
         
-        #time2 = time.time()
-        #if VERBOSE :
-            #print ('%s detector found: %s points in: %s sec.'%(method,
-               # len(featPoints),time2-time1))
-        
-        #for featpoint in featPoints:
-            #x,y = featpoint.pt
-            #cv2.circle(image_np,(int(x),int(y)), 3, (0,0,255), -1)
         imageList.append(image_np)
-        #cv2.imshow('cv_img', image_np)
-        #image_path = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/My_Training_Data/Daniel/p03/01'
-        
-        # The images are written to disk after recieveing the images
+        # The images are written to disk after receiving the images
         # defined by BATCH_SIZE
         if len(imageList) == BATCH_SIZE:
             print("Images in list: " + str(len(imageList)))
@@ -115,6 +86,11 @@ class image_feature:
 #         #self.subscriber.unregister()
 # =============================================================================
 
+"""
+Main class creates an object of image_feature class and hands control over 
+to rospy.spin function which keeps calling running the methods in this class
+in a loop
+"""
 def main(args):
     '''Initializes and cleanup ros node'''
     ic = image_feature()

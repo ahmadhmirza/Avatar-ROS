@@ -1,4 +1,11 @@
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+------------------------------------------------------------------------------
+Script to generate the csv file with mapping from images to their respective
+classes, This file is used to generate the One-Hot-Encoding component.
+------------------------------------------------------------------------------
+Created on Fri Oct 11 11:11:11 2019
+@author: Ahmad Hassan Mirza - ahmadhassan.mirza@gmail.com
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 import os
 import csv

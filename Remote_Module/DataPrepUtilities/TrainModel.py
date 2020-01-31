@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 22 12:21:31 2020
 
-@author: ahmad
-"""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@author: Ahmad Hassan Mirza - ahmadhassan.mirza@gmail.com
+------------------------------------------------------------------------------
+Script for training and validation of CNN model based on VGG16 pre-trained 
+model
+------------------------------------------------------------------------------
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 import numpy as np 
 import matplotlib.pyplot as plt
@@ -39,9 +43,10 @@ CLASS_MAPPING_CLASS_IND = 0
 
 y_data=[]  #Corresponding Classes
 
-# read data for P01
 X = [ ]
 
+
+#Read images from disk
 for item in  Data_Info:
     dataEntries = Data_Info[item][0]   
     dataPath = Data_Info[item][1] 
@@ -62,19 +67,17 @@ print ("Total training images for training dataset: " + str(len(X)))
 
 
 # =============================================================================
-# we need two things to train our model:
+# Preparing:
 # Training images, and
 # Their corresponding class
 # =============================================================================
 from keras.utils import np_utils
-dummy_y = np_utils.to_categorical(y_data)    # one hot-encoding Classes
-
-print("Encoding Class : (dummy_y) :  Ready")
+OHC_y = np_utils.to_categorical(y_data)    # one hot-encoding Classes
 
 # =============================================================================
-# We will be using a VGG16 pretrained model which takes an input image of shape 
-# (224 X 224 X 3). Since our images are in a different size, we need to reshape 
-# all of them. We will use the resize() function of skimage.transform
+# Using VGG16 pretrained model which takes an input image of shape 
+# (224 X 224 X 3). Since the images might be in a different size, a reshaping
+# step is also performed here to the specified size
 # =============================================================================
 from skimage.transform import resize 
 img = []
@@ -83,54 +86,49 @@ total = len(X)
 current = 0
 for i in range(0,X.shape[0]):
     current +=1
-    a = resize(X[i], preserve_range=True, output_shape=(224,224)).astype(int)      # reshaping to 224*224*3
-    img.append(a)
+    # reshaping to 224*224*3
+    img_temp = resize(X[i], preserve_range=True, output_shape=(224,224)).astype(int)      
+    img.append(img_temp)
 X = np.array(img)
 print ("Images Resized...")
 
 # =============================================================================
-#  Before passing any input to the model, we must preprocess it as per the
-#  model’s requirement. Otherwise, the model will not perform well enough
+#  Pre-Processing input data as per VGG16's specs
 # =============================================================================
-
 print ("Pre-processing Images...")
 from keras.applications.vgg16 import preprocess_input
-X = preprocess_input(X, mode='tf')      # preprocessing the input data
-
+X = preprocess_input(X, mode='tf')
 print("Pre-Processing Done...")
 
+# Dividing the data set into train and test data sets
 print("Preparing train and test data..") 
 from sklearn.model_selection import train_test_split
-X_train, X_valid, y_train, y_valid = train_test_split(X, dummy_y, test_size=0.5, random_state=42)    # preparing the validation set
-
+X_train, X_valid, y_train, y_valid = train_test_split(X, OHC_y, test_size=0.5, random_state=42)
 print("Data prepared...")
 
 
-#Build the Model
-#Using the VGG16 pretrained model
+# =============================================================================
+#  Building the model
+# =============================================================================
 import keras
 from keras.models import Sequential
 from keras.applications.vgg16 import VGG16
-#from keras.layers import Dense, InputLayer, Dropout
 from keras.layers import Dense, InputLayer
 print(keras.__version__)
-
-#from keras.applications import resnet50
 from pypac import pac_context_for_url
 with pac_context_for_url("https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"):
     base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
 #Loading VGG16 model and saving it as base_model
-
 print("VGG Model loaded...")   
 
 ############################################################################### 
 # include_top=False to remove the top layer
+# top layer of the model will be re.defined to fit the data set
 
-# Make predictions using this model for X_train and X_valid, get the features, 
-#and then use those features to retrain the model.
+# Here features from the dataset are extracted using the VGG model and
+# These extracted features are then used to train the model further.
 ###############################################################################
-
 
 print("Making predictions...")
 X_train = base_model.predict(X_train,batch_size = 20)
@@ -139,18 +137,15 @@ X_train.shape, X_valid.shape
 
 print(X_train.shape)
 print(X_valid.shape)
-
-# Shape of X_train and X_valid is 574, 7, 7, 512), (246, 7, 7, 512) respectively.
-# In order to pass it to our neural network, we have to reshape it to 1-D.
-print("Converting base models to 1-D")
-###change expected here###
-X_train = X_train.reshape(X_train.shape[0], 7*7*512)      # converting to 1-D
+# Reshaping input data to 1-D as CNN only accepts data with this dimension
+print("Converting dataset to 1-D")
+X_train = X_train.reshape(X_train.shape[0], 7*7*512)
 X_valid = X_valid.reshape(X_valid.shape[0], 7*7*512)
 print("1-D Conversion : Done")
 
 ###############################################################################
 #print("preprocessing images to zero center...")
-##preprocess the images and zero-center them -> helps the model converge faster
+##preprocess the images and zero-centering -> helps the model converge faster
 #train = X_train/X_train.max()      # centering the data
 #X_valid = X_valid/X_train.max()
 #print("Zero Centering: Done")
