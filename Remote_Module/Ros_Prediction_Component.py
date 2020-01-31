@@ -10,43 +10,28 @@ _version__=  '0.1'
 
 
 ################################ ROS- imports #################################
-import sys, time
+import sys
 # numpy and scipy
 import numpy as np
-from scipy.ndimage import filters
 # OpenCV
 import cv2
 # Ros libraries
-import roslib
 import rospy
 from std_msgs.msg import Int32
 
 ###############################################################################
 import os
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np    # for mathematical operations
-#import tensorflow.compat.v1 as tf
 import tensorflow as tf
 tf.disable_v2_behavior()
-import keras
-from keras.utils import np_utils
 from skimage.transform import resize 
 from keras.applications.vgg16 import preprocess_input
-from sklearn.model_selection import train_test_split
-from keras.models import Sequential
 from keras.applications.vgg16 import VGG16
-#from keras.layers import Dense, InputLayer, Dropout
-from keras.layers import Dense, InputLayer
 from keras.models import model_from_json
 ###############################################################################
-import cv2
-import os
 from os import walk
 import shutil
-import matplotlib.pyplot as plt
 from natsort import natsorted, ns
-import numpy as np
 ##################
 import dlib
 from pypac import pac_context_for_url
