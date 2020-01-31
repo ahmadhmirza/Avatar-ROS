@@ -3,14 +3,13 @@
 """
 Created on Thu Jan 30 13:59:39 2020
 
-@author: ahmad
+@author: Ahmad.H.Mirza
 """
 import cv2
 import os
 from os import walk
 from natsort import natsorted, ns
 import numpy as np
-from numpy import array
 ##################
 from keras.models import Sequential
 from keras.layers import Dense
@@ -33,15 +32,6 @@ Data_Info = {
         "p03": [40,"p03",3],
         }
 
-#class_Mappings= {
-#        "w01" : [0,"Start"],
-#        "w02" : [0,"Stop"],
-#        "w03" : [0,"Hello"],
-#        "p01" : [1,"How are you?"],
-#        "p02" : [2,"Nice to meet you?"],
-#        "p03" : [3,"Thank you!"],
-#        "c00" : [0,"Unclassified"]
-#        }
 
 """
 Function to Read images from a directory
@@ -132,10 +122,6 @@ PARAM   :
 RETURN  : xxxx
 """
 from sklearn.model_selection import train_test_split
-from keras.layers import Flatten
-from keras.layers import TimeDistributed
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
 
 def Model(x,y,epoch,length):
     
@@ -148,7 +134,7 @@ def Model(x,y,epoch,length):
     n_epoch = 500
 
 
-#VER-1 : Vanilla LSTM
+##VER-1 : Vanilla LSTM
     # create LSTM -ver-1
     model = Sequential()
     model.add(LSTM(n_neurons, input_shape=(x.shape[1], x.shape[2])))
@@ -164,7 +150,7 @@ def Model(x,y,epoch,length):
 #    model.compile(loss='mean_squared_error', optimizer='adam',metrics=['accuracy'])
 #    print(model.summary())
     
-#    # create CNN - LSTM -ver-2
+##VER-3 : CNN - LSTM
 #    model = Sequential()
 #    model.add(TimeDistributed(Conv1D(filters=64, kernel_size=1, activation='relu'), input_shape=(None,x.shape[1], x.shape[2])))
 #    model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
@@ -227,8 +213,8 @@ PARAM   :
         Features
 RETURN  : Reshaped array
 """        
-def reshapeArray_1(inArray,samples,timeStep,features):
-    x= inArray.reshape(SAMPLES,TIME_STEP,FEATURES)
+def reshapeArray_1(inArray,mSamples,mTimeStep,mFeatures):
+    x= inArray.reshape(mSamples,mTimeStep,mFeatures)
     return x
         
 """
@@ -266,7 +252,7 @@ def main():
     y  = y_data
     y = np_utils.to_categorical(y_data)
     
-    Model(x,y,300,36)
+    Model(x,y,200,500)
 
     
 if __name__ == "__main__":

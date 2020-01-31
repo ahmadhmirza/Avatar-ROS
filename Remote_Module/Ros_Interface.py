@@ -28,10 +28,9 @@ from sensor_msgs.msg import CompressedImage
 # We do not use cv_bridge it does not support CompressedImage in python
 # from cv_bridge import CvBridge, CvBridgeError
 VERBOSE=False
-    
-    
+       
 
-class image_feature:
+class image_feature:    
         
 
     def __init__(self):
@@ -53,6 +52,8 @@ class image_feature:
     def callback(self, ros_data):
         global imageList
         global count
+        BATCH_SIZE = 14
+        
         '''Callback function of subscribed topic. 
         Here images get converted and features detected'''
         #print("here")
@@ -88,7 +89,9 @@ class image_feature:
         #cv2.imshow('cv_img', image_np)
         #image_path = r'/home/ahmad/Avatar/MachineLearning/data_prep_v1/My_Training_Data/Daniel/p03/01'
         
-        if len(imageList) == 14:
+        # The images are written to disk after recieveing the images
+        # defined by BATCH_SIZE
+        if len(imageList) == BATCH_SIZE:
             print("Images in list: " + str(len(imageList)))
             for img in imageList:
                 count+=1
