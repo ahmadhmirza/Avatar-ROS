@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 30 13:59:39 2020
+
+@author: ahmad
+"""
+import cv2
+import os
+from os import walk
+from natsort import natsorted, ns
+import numpy as np
+from numpy import array
+##################
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+##################
+
+
+MAX_IMAGES_IN_SEQUENCE = 42  
+IMAGESIZE=[150,150]
+
+SAMPLES     = 130
+TIME_STEP   = MAX_IMAGES_IN_SEQUENCE
+FEATURES    = IMAGESIZE[0]*IMAGESIZE[1]
+
+DATA_SET_PATH = r"/home/ahmad/Desktop/Avatar_LipReading_DataSet/sequenceData/"
+
+Data_Info = {
+        "p01": [50,"p01",1],
+        "p02": [40,"p02",2],
+        "p03": [40,"p03",3],
+        }
+
+#class_Mappings= {
+#        "w01" : [0,"Start"],
+#        "w02" : [0,"Stop"],
+#        "w03" : [0,"Hello"],
+#        "p01" : [1,"How are you?"],
+#        "p02" : [2,"Nice to meet you?"],
+#        "p03" : [3,"Thank you!"],
+#        "c00" : [0,"Unclassified"]
+#        }
+
+"""
+Function to Read images from a directory
+Reads in .jpg format
+resizes the images to the size defined by IMAGESIZE constant
+
+PARAM   : Path to read images from
+RETURN  : A list of images
+"""
+def readImagesInPath(path):
+    fileList=[]
+    img_Names_List=[]
+    images=[]
+    for (dirpath, dirnames, filenames) in walk(path):
+        #Read all the images in the current directory
+        #arrange them in the list by name so the sequence in maintained
+        fileList.extend(filenames)
+        fileList=natsorted(fileList, alg=ns.IGNORECASE)
+        #Read the image in the openCV array
+        for element in fileList:
+            if ".jpg" in element:
+                img_Names_List.append(element)
+        for image in img_Names_List:
+            image_path = os.path.join(path,image)
+            img = cv2.imread(image_path,cv2.IMREAD_GRAYSCALE)
+            #img = cv2.imread(image_path)
+            #plt.show(img)
+            if img is not None:
+                img=cv2.resize(img,(IMAGESIZE[0],IMAGESIZE[1]))
+                images.append(img)
+        return images
+    
+    
+"""
+To train the model expects the input of a constant size
+This function adds 0 array as image to the list as padding
+OR removes extra images
+
+PARAM   : 
+        Threshold : total allowed number of images
+        ImageSequence: List of images to which padding is to be applied
+        
+RETURN  : Updated list of images with padding
+"""
+def make_zeros(n_rows: int, n_columns: int):
+    matrix = []
+    for i in range(n_rows):
+        matrix.append([0] * n_columns)
+    return matrix
+
+def addPadding(threshold,ImageSequence):
+    length = len(ImageSequence)
+    count = abs(threshold -length)
+    PaddingMatrix = make_zeros(IMAGESIZE[0],IMAGESIZE[1])
+    
+    pendulum = 0
+    
+    if(length<threshold):
+        print(str(count) + " Images will be added as padding.")
+        for x in range(0,count):
+            if pendulum == 0:
+                ImageSequence.insert(0,PaddingMatrix)
+                pendulum = 1
+            elif pendulum == 1:
+                ImageSequence.append(PaddingMatrix)
+                pendulum = 0
+    if(length>threshold):
+        print(str(count) + " Images will be removed and not considered.")
+        for x in range(0,count):
+            if pendulum == 0:
+                del ImageSequence[0]
+                pendulum = 1
+            elif pendulum == 1:
+                ind = len(ImageSequence)-1
+                del ImageSequence[ind]
+                pendulum = 0
+    return ImageSequence
+
+"""
+Function to create TF model
+
+PARAM   : 
+        x - Training Data
+        y - Classification Data
+        epoch - INT - Number of epochs
+        length - number of neurons
+        
+RETURN  : xxxx
+"""
+from sklearn.model_selection import train_test_split
+from keras.layers import Flatten
+from keras.layers import TimeDistributed
+from keras.layers.convolutional import Conv1D
+from keras.layers.convolutional import MaxPooling1D
+
+def Model(x,y,epoch,length):
+    
+    print("Preparing train and test data..") 
+    x_train, x_valid, y_train, y_valid = train_test_split(x, y, test_size=0.2, random_state=42)    # preparing the validation set
+    print("Data prepared...")
+
+    n_neurons = 50
+    n_batch = 10
+    n_epoch = 500
+    print(x.shape)
+
+##VER-1 : Vanilla LSTM
+#    # create LSTM -ver-1
+#    model = Sequential()
+#    model.add(LSTM(n_neurons, input_shape=(x.shape[1], x.shape[2])))
+#    model.add(Dense(4))
+#    model.compile(loss='mean_squared_error', optimizer='adam',metrics=['accuracy'])
+#    print(model.summary())  
+
+##VER-2 : Stacked LSTM 
+#    model = Sequential()
+#    model.add(LSTM(n_neurons, return_sequences=True, input_shape=(x.shape[1], x.shape[2])))
+#    model.add(LSTM(n_neurons))
+#    model.add(Dense(4))
+#    model.compile(loss='mean_squared_error', optimizer='adam',metrics=['accuracy'])
+#    print(model.summary())
+#  
+    #####################
+#VER-3: create CNN - LSTM
+    model = Sequential()
+    model.add(TimeDistributed(Conv1D(filters=64, kernel_size=3, activation='relu'), input_shape=(None,42, 4)))
+    model.add(TimeDistributed(MaxPooling1D(pool_size=2)))
+    model.add(TimeDistributed(Flatten()))
+    #model.add(LSTM(n_neurons, input_shape=(x.shape[1], x.shape[2])))
+    model.add(LSTM(n_neurons))
+    model.add(Dense(4))
+    model.compile(loss='mean_squared_error', optimizer='adam',metrics=['accuracy'])
+    print(model.summary())
+#    
+    # train LSTM
+    history=model.fit(x_train, y_train, epochs=n_epoch, batch_size=n_batch, verbose=2)
+    
+    print("Traing Process : Done")  # evaluate
+    print("Evaluating Model on Test data")
+    try:
+        scores = model.evaluate(x_valid,y_valid)
+        print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+        print('Test set\n  Loss: {:0.3f}\n  Accuracy: {:0.3f}'.format(scores[0],scores[1]))
+    except:
+        print("Error calculating scores")
+    
+    print("========================================")
+    #Make Plots:
+    import matplotlib.pyplot as plt
+    print(history.history.keys())
+    try:
+        plt.title('Loss')
+        plt.plot(history.history['loss'], label='Loss')
+        plt.plot(history.history['accuracy'], label='Accuracy')
+        plt.legend()
+        plt.show()
+        #FIG_PATH = r"/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/LSTM/_out/Figure/Model_Loss_Plot.png"
+        #plt.savefig(FIG_PATH)
+        #print("Plot saved...")
+    except:
+        print("Unable to save plot to disk.")
+    print("Saving the Model...")
+    modelJson = r'/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/LSTM/_out/Model/model.json'
+    modelH5 = r'/home/ahmad/catkinJava_ws/Remote_Module/DataPrepUtilities/LSTM/_out/Model/model.h5'
+    # serialize model to JSON
+    model_json = model.to_json()
+    try:
+        with open(modelJson, "w") as json_file:
+            json_file.write(model_json)
+        # serialize weights to HDF5
+        model.save_weights(modelH5)
+        print("Model saved to disk...")
+    except:
+        print("Unable to save model.")
+    #model.save(TF_Model)
+    print(model.summary())
+
+"""
+Function to reshape array to required 3-d shape
+PARAM   : 
+        Input array, 
+        Number of Samples, 
+        TimeStep, 
+        Features
+RETURN  : Reshaped array
+"""        
+def reshapeArray_1(inArray,samples,timeStep,features):
+    x= inArray.reshape(SAMPLES,TIME_STEP,FEATURES)
+    return x
+        
+"""
+Main Function
+"""
+def main():
+    
+    samplesList = []
+    y_data =[]
+    for item in  Data_Info:
+        #print(item)
+        dataPath        =   os.path.join(DATA_SET_PATH,item)
+        numberOfSubDirectories  =   Data_Info[item][0]
+        classMapping  =   Data_Info[item][2]
+        
+        for sample in range(1,numberOfSubDirectories+1):
+            samplePath = os.path.join(dataPath,str(sample)+"/")
+            #print("Reading Images from:")
+            #print(samplePath)
+            sample = readImagesInPath(samplePath)
+            sample_padded=addPadding(MAX_IMAGES_IN_SEQUENCE,sample)
+            #convert list to array:
+            sample_array=np.asarray(sample_padded)
+            samplesList.append(sample_array)
+            y_data.append(classMapping)
+    
+    trainingData = np.array([])
+    for item in samplesList:
+        trainingData = np.append(trainingData, item)   
+        
+    TrainingData_FINAL=reshapeArray_1(trainingData,SAMPLES,TIME_STEP,FEATURES)
+    #TrainingData_FINAL=trainingData
+    
+    
+    from keras.utils import np_utils
+    x  = TrainingData_FINAL
+    y  = y_data
+    y = np_utils.to_categorical(y_data)
+    
+    Model(x,y,300,36)
+
+    
+if __name__ == "__main__":
+    main()
