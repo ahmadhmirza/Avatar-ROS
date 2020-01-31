@@ -24,9 +24,6 @@ import matplotlib.pyplot as plt
 #import tensorflow.compat.v1 as tf
 import tensorflow as tf
 tf.disable_v2_behavior()
-from skimage.transform import resize 
-from keras.applications.vgg16 import preprocess_input
-from keras.applications.vgg16 import VGG16
 from keras.models import model_from_json
 ###############################################################################
 from os import walk
@@ -34,22 +31,11 @@ import shutil
 from natsort import natsorted, ns
 ##################
 import dlib
-from pypac import pac_context_for_url
 ###############################################################################
 
 class LipReading_Predictor:
     def __init(self):#
         print("Prediction class initialized successfully")
-##################### Part -1 : Load pre-trained model ########################
-#        self.image_path = r'/home/ahmad/Avatar/Prediction_Path'
-#        
-#        with pac_context_for_url("https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5"):
-#            self.base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))        
-#        #Loading VGG16 model and saving it as base_model        
-#        print("VGG Model loaded...") 
-        
-############## Part -1.1 : Load Model Trained for lip-reading #################
-
 
     def getClassToPhraseMap(classNumber):
         NumToLang = {
@@ -120,15 +106,7 @@ class Ros_PredictionFlag:
         for i in range(n_rows):
             matrix.append([0] * n_columns)
         return matrix        
-    """
-    Function to reshape array to required 3-d shape
-    PARAM   : 
-            Input array, 
-            Number of Samples, 
-            TimeStep, 
-            Features
-    RETURN  : Reshaped array
-    """        
+        
     def reshapeArray_1(self,inArray,mSamples,mTimeStep,mFeatures):
         x= inArray.reshape(mSamples,mTimeStep,mFeatures)
         return x  
@@ -279,7 +257,7 @@ class Ros_PredictionFlag:
 ##############################################################################
 
 def main(args):
-    '''Initializes and cleanup ros node'''
+    '''Initializes and cleans up ros node'''
     ic = Ros_PredictionFlag()
     rospy.init_node('Avatar_Desktop_Prediction', anonymous=False)
     print("ok")
