@@ -2,6 +2,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ------------------------------------------------------------------------------
 Script to make prediction once the transmission from Remote device is complete
+FOR CNN MODEL
 ------------------------------------------------------------------------------
 Created on Sun Nov 10 10:10:10 2019
 @author: Ahmad Hassan Mirza - ahmadhassan.mirza@gmail.com
