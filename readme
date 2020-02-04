@@ -3,4 +3,20 @@ Project AVATAR:
 * with a PC running ROS-master node to allow for running TF model and
 * performing predictions on the PC.
 
+Directories for Android App:
+* src
+* devel
+* build
+* apk
+
+Directories for MachineLearning Component
+*Remote_Module
+** DataPrepUtilities == Scripts for pre-processing data
+                     == Scripts fro training and evaluation Models
+** Project_Avatar_LipReading_DataSet == Training Dataset used
+** Resources == Model files
+
+Archive:
+* Test scripts and Documentation notes
+
 *The project must be placed locally in /home/ahmad/catkinJava_ws Directory
