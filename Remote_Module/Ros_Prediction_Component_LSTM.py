@@ -49,12 +49,12 @@ class LipReading_Predictor:
     def performPrediction(x_data):
 ############## Part -1.1 : Load Model Trained for lip-reading #################
         
-# vLSTM--1
-        modelJson = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/1/model.json'
-        modelH5 = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/1/model.h5'
-# vLSTM--2
-        #modelJson = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/2/model.json'
-        #modelH5 = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/2/model.h5'  
+## vLSTM--1
+#        modelJson = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/1/model.json'
+#        modelH5 = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/1/model.h5'
+#vLSTM--2
+        modelJson = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/2/model.json'
+        modelH5 = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/vLSTM/2/model.h5'  
 # sLSTM--1
         #modelJson = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/sLSTM/model.json'
         #modelH5 = r'/home/ahmad/Avatar/MachineLearning/LSTM_Models/sLSTM/model.h5'          
